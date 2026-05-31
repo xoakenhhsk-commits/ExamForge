@@ -1,0 +1,23 @@
+{
+  "roomCode": "MIDVSM",
+  "examId": "kad7rsbzt",
+  "userId": "sehfeakaf",
+  "examTitle": "ĐỀ THI TRẮC NGHIỆM MÔN........",
+  "createdAt": "2026-05-30T11:54:59.427Z",
+  "status": "active",
+  "enableAntiCheat": false,
+  "results": [
+    {
+      "studentName": "chau nm",
+      "score": "3.50",
+      "cheatCount": 0,
+      "submittedAt": "2026-05-30T11:56:42.784Z"
+    },
+    {
+      "studentName": "chau nm thi lại",
+      "score": "4.50",
+      "cheatCount": 0,
+      "submittedAt": "2026-05-30T11:57:40.520Z"
+    }
+  ]
+}

@@ -1,0 +1,95 @@
+{
+  "id": "wkrhlj87j",
+  "userId": "sehfeakaf",
+  "ownerName": "chau va dút",
+  "examTitle": "ĐỀ THI TRẮC NGHIỆM MÔN...",
+  "schoolDept": "SỞ GIÁO DỤC VÀ ĐÀO TẠO HÀ NỘI",
+  "schoolName": "TRƯỜNG THPT CHUYÊN HÀ NỘI - AMSTERDAM",
+  "examYearSubject": "Môn thi: TOÁN HỌC - Năm học: 2025 - 2026",
+  "examDuration": "Thời gian làm bài: 90 phút (không kể thời gian giao đề)",
+  "fontFamily": "'Times New Roman', Times, serif",
+  "questions": [
+    {
+      "id": "v1xmwmwdg",
+      "text": "",
+      "options": [
+        {
+          "id": "fcwwk6177",
+          "text": "",
+          "isCorrect": false
+        },
+        {
+          "id": "ke2yij00m",
+          "text": "",
+          "isCorrect": false
+        },
+        {
+          "id": "8nvpsuo7x",
+          "text": "",
+          "isCorrect": false
+        },
+        {
+          "id": "mft2vsffl",
+          "text": "",
+          "isCorrect": false
+        }
+      ]
+    },
+    {
+      "id": "ux6wwlmaj",
+      "text": "xin chào các bạn nhé ",
+      "options": [
+        {
+          "id": "513vxeh1d",
+          "text": "",
+          "isCorrect": false
+        },
+        {
+          "id": "3rzucup1v",
+          "text": "",
+          "isCorrect": false
+        },
+        {
+          "id": "8pq8skc8k",
+          "text": "",
+          "isCorrect": true
+        },
+        {
+          "id": "dow7a4zvd",
+          "text": "",
+          "isCorrect": false
+        }
+      ]
+    },
+    {
+      "id": "pvsv97lhd",
+      "text": "",
+      "options": [
+        {
+          "id": "6n45mgchh",
+          "text": "",
+          "isCorrect": false
+        },
+        {
+          "id": "63ed19h7m",
+          "text": "",
+          "isCorrect": true
+        },
+        {
+          "id": "xsonvxw62",
+          "text": "",
+          "isCorrect": false
+        },
+        {
+          "id": "8d9dikzbl",
+          "text": "",
+          "isCorrect": false
+        }
+      ]
+    }
+  ],
+  "isShared": false,
+  "sharePermission": "view",
+  "createdAt": "2026-05-28T12:04:43.639Z",
+  "updatedAt": "2026-05-29T05:54:44.201Z"
+}

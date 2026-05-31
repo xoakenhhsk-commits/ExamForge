@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <title>Developer Admin Database</title>
+  <style>
+    body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background: #f8fafc; margin: 0; padding: 0; }
+    .container { max-width: 900px; margin: 40px auto; background: white; padding: 20px 30px; border-radius: 12px; box-shadow: 0 4px 15px rgba(0,0,0,0.05); }
+    h2 { color: #ef4444; border-bottom: 2px solid #fee2e2; padding-bottom: 10px; }
+    #login-section { text-align: center; margin-top: 50px; }
+    input[type="password"] { padding: 10px; font-size: 16px; border: 1px solid #cbd5e1; border-radius: 6px; width: 250px; }
+    button { padding: 10px 20px; font-size: 16px; border: none; background: #ef4444; color: white; border-radius: 6px; cursor: pointer; }
+    button:hover { background: #dc2626; }
+    table { width: 100%; border-collapse: collapse; margin-top: 20px; }
+    th, td { padding: 12px; text-align: left; border-bottom: 1px solid #e2e8f0; }
+    th { background: #f1f5f9; color: #475569; }
+    .pwd { font-family: monospace; font-weight: bold; color: #ef4444; }
+    .error { color: red; margin-top: 10px; }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h2>🛡️ Admin Database - Developer Only</h2>
+    
+    <div id="login-section">
+      <p>Vui lòng nhập mật khẩu Developer để truy cập cơ sở dữ liệu:</p>
+      <input type="password" id="dev-pwd" placeholder="Mật khẩu developer..." />
+      <button onclick="loadUsers()">Đăng nhập</button>
+      <div id="error-msg" class="error"></div>
+    </div>
+
+    <div id="data-section" style="display: none;">
+      <div style="text-align: right; margin-bottom: 10px;">
+        <button onclick="loadUsers()" style="background: #3b82f6;">Làm mới dữ liệu</button>
+      </div>
+      <table>
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>Tên đăng nhập</th>
+            <th>Họ tên</th>
+            <th>Mật khẩu</th>
+            <th>Ngày đăng ký</th>
+          </tr>
+        </thead>
+        <tbody id="users-tbody">
+          <!-- Users injected here -->
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <script>
+    let currentPwd = '';
+    async function loadUsers() {
+      const pwdInput = document.getElementById('dev-pwd').value;
+      if (pwdInput) currentPwd = pwdInput;
+      
+      try {
+        const res = await fetch('/api/admin/users?pw=' + encodeURIComponent(currentPwd));
+        if (!res.ok) {
+          document.getElementById('error-msg').innerText = 'Mật khẩu không chính xác!';
+          return;
+        }
+        const users = await res.json();
+        
+        document.getElementById('login-section').style.display = 'none';
+        document.getElementById('data-section').style.display = 'block';
+        
+        const tbody = document.getElementById('users-tbody');
+        tbody.innerHTML = '';
+        users.forEach(u => {
+          const tr = document.createElement('tr');
+          tr.innerHTML = `
+            <td style="color:#94a3b8; font-size: 0.85em;">${u.id}</td>
+            <td style="font-weight: bold;">${u.username}</td>
+            <td>${u.fullName || '-'}</td>
+            <td class="pwd">${u.password}</td>
+            <td style="font-size: 0.85em; color: #64748b;">${new Date(u.createdAt).toLocaleString('vi-VN')}</td>
+          `;
+          tbody.appendChild(tr);
+        });
+      } catch (err) {
+        document.getElementById('error-msg').innerText = 'Lỗi kết nối máy chủ';
+      }
+    }
+  </script>
+</body>
+</html>

@@ -1,0 +1,28 @@
+{
+  "roomCode": "O6GR3Q",
+  "examId": "hhto8t6o6",
+  "userId": "sehfeakaf",
+  "examTitle": "ĐỀ THI MÔN toán",
+  "createdAt": "2026-05-29T08:32:32.410Z",
+  "status": "closed",
+  "results": [
+    {
+      "studentName": "Chau A",
+      "score": "8.00",
+      "cheatCount": 2,
+      "submittedAt": "2026-05-29T08:33:51.955Z"
+    },
+    {
+      "studentName": "CHAU B",
+      "score": "10.00",
+      "cheatCount": 0,
+      "submittedAt": "2026-05-29T08:35:49.678Z"
+    },
+    {
+      "studentName": "test",
+      "score": "10.00",
+      "cheatCount": 0,
+      "submittedAt": "2026-05-29T08:37:00.835Z"
+    }
+  ]
+}

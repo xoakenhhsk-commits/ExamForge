@@ -1,0 +1,148 @@
+{
+  "id": "hhto8t6o6",
+  "userId": "sehfeakaf",
+  "ownerName": "chau va dút",
+  "examTitle": "ĐỀ THI MÔN toán",
+  "schoolDept": "SỞ GIÁO DỤC VÀ ĐÀO TẠO An giang ",
+  "schoolName": "TRƯỜNG THPT chi lăng",
+  "examYearSubject": "Môn thi: TOÁN HỌC - Năm học: 2025 - 2026",
+  "examDuration": "Thời gian làm bài: 90 phút (không kể thời gian phát đề)",
+  "fontFamily": "'Times New Roman', Times, serif",
+  "questions": [
+    {
+      "id": "6sbj344bj",
+      "text": "1+1 = bao nhiều ?",
+      "options": [
+        {
+          "id": "lwju2fmgw",
+          "text": "2",
+          "isCorrect": true
+        },
+        {
+          "id": "y416r9yj0",
+          "text": "3",
+          "isCorrect": false
+        },
+        {
+          "id": "8bdg6i5qd",
+          "text": "4",
+          "isCorrect": false
+        },
+        {
+          "id": "jsboh7466",
+          "text": "6",
+          "isCorrect": false
+        }
+      ]
+    },
+    {
+      "id": "g9yjjc0hn",
+      "text": "An Giang ở Miền Nam của Việt Nam ?",
+      "options": [
+        {
+          "id": "rzbd1orz5",
+          "text": "Miền Trung",
+          "isCorrect": false
+        },
+        {
+          "id": "x8j0622mm",
+          "text": "Miền Nam ",
+          "isCorrect": true
+        },
+        {
+          "id": "sk2na3z43",
+          "text": "Miền Tây ",
+          "isCorrect": false
+        },
+        {
+          "id": "g5u0sceui",
+          "text": "Miền Bắc ",
+          "isCorrect": false
+        }
+      ]
+    },
+    {
+      "id": "u6bpj2lxn",
+      "text": "Hiện nay, đồng chí Tô Lâm đang đồng thời đảm nhiệm hai chức vụ lãnh đạo cao nhất nào?",
+      "options": [
+        {
+          "id": "7zvtsm2cy",
+          "text": "Tổng Bí thư và Thủ tướng Chính phủ",
+          "isCorrect": false
+        },
+        {
+          "id": "hc0aq0oq8",
+          "text": "Tổng Bí thư và Chủ tịch nước",
+          "isCorrect": true
+        },
+        {
+          "id": "4v7cbq6a5",
+          "text": "Chủ tịch nước và Chủ tịch Quốc hội",
+          "isCorrect": false
+        },
+        {
+          "id": "6m1jgk5q1",
+          "text": "Thường trực Ban Bí thư và Chủ tịch nước",
+          "isCorrect": false
+        }
+      ]
+    },
+    {
+      "id": "ojse7z3dh",
+      "text": "Ai là người tiền nhiệm giữ chức vụ Chủ tịch nước ngay trước đồng chí Tô Lâm trong giai đoạn từ tháng 10/2024 đến tháng 4/2026?",
+      "options": [
+        {
+          "id": "6q9cfavs7",
+          "text": "Nguyễn Phú Trọng",
+          "isCorrect": false
+        },
+        {
+          "id": "7dx4i8qhb",
+          "text": "Võ Văn Thưởng",
+          "isCorrect": false
+        },
+        {
+          "id": "6nc62x3z1",
+          "text": "Nguyễn Xuân Phúc",
+          "isCorrect": false
+        },
+        {
+          "id": "1xdnkns6n",
+          "text": "Lương Cường",
+          "isCorrect": true
+        }
+      ],
+      "points": 1
+    },
+    {
+      "id": "z24cwkq0d",
+      "text": "2+5 bằng bao nhiều ?",
+      "options": [
+        {
+          "id": "qy8vuuqun",
+          "text": "4",
+          "isCorrect": false
+        },
+        {
+          "id": "7t81ddsvq",
+          "text": "7",
+          "isCorrect": true
+        },
+        {
+          "id": "2ss0h4sjo",
+          "text": "8",
+          "isCorrect": false
+        },
+        {
+          "id": "628wokbhc",
+          "text": "10",
+          "isCorrect": false
+        }
+      ]
+    }
+  ],
+  "isShared": true,
+  "sharePermission": "view",
+  "createdAt": "2026-05-29T07:56:09.630Z",
+  "updatedAt": "2026-05-30T11:53:11.323Z"
+}

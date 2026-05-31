@@ -1,0 +1,125 @@
+{
+  "id": "kad7rsbzt",
+  "userId": "sehfeakaf",
+  "ownerName": "chau va dút",
+  "examTitle": "ĐỀ THI TRẮC NGHIỆM MÔN........",
+  "schoolDept": "SỞ GIÁO DỤC VÀ ĐÀO TẠO. ",
+  "schoolName": "TRƯỜNG THPT...",
+  "examYearSubject": "Môn thi: TOÁN HỌC - Năm học: 2025 - 2026",
+  "examDuration": "Thời gian làm bài: 90 phút (không kể thời gian giao đề)",
+  "fontFamily": "'Times New Roman', Times, serif",
+  "questions": [
+    {
+      "id": "1rk369ztn",
+      "text": "Trái Đất quay quanh mặt trời mất bao lâu?",
+      "points": 1,
+      "options": [
+        {
+          "id": "xat5d6tqc",
+          "text": "365 ngày",
+          "isCorrect": true
+        },
+        {
+          "id": "lyolkdgss",
+          "text": "12 giờ",
+          "isCorrect": false
+        },
+        {
+          "id": "ltydswp4y",
+          "text": "30 ngày",
+          "isCorrect": false
+        },
+        {
+          "id": "ki07gz6um",
+          "text": "24 giờ",
+          "isCorrect": false
+        }
+      ]
+    },
+    {
+      "id": "nw1rc0392",
+      "text": "Công thức hóa học của nước là?",
+      "points": 1.5,
+      "options": [
+        {
+          "id": "5frnuv7bg",
+          "text": "H2O",
+          "isCorrect": true
+        },
+        {
+          "id": "c9b32vtbg",
+          "text": "NaCl",
+          "isCorrect": false
+        },
+        {
+          "id": "4ojapaur1",
+          "text": "HCl",
+          "isCorrect": false
+        },
+        {
+          "id": "gud94gfbz",
+          "text": "CO2",
+          "isCorrect": false
+        }
+      ]
+    },
+    {
+      "id": "jmibondk5",
+      "text": "Trái Đất quay quanh mặt trời mất bao lâu?",
+      "points": 1,
+      "options": [
+        {
+          "id": "pjgya4x6z",
+          "text": "365 ngày",
+          "isCorrect": true
+        },
+        {
+          "id": "6jdyy0ic7",
+          "text": "24 giờ",
+          "isCorrect": false
+        },
+        {
+          "id": "s3sw3nbdi",
+          "text": "12 giờ",
+          "isCorrect": false
+        },
+        {
+          "id": "xoiu9gqen",
+          "text": "30 ngày",
+          "isCorrect": false
+        }
+      ]
+    },
+    {
+      "id": "6hmitpnik",
+      "text": "Công thức hóa học của nước là?",
+      "points": 1,
+      "options": [
+        {
+          "id": "g5xl42z0m",
+          "text": "HCl",
+          "isCorrect": false
+        },
+        {
+          "id": "eqgcfz3hk",
+          "text": "NaCl",
+          "isCorrect": false
+        },
+        {
+          "id": "r7pi4odcx",
+          "text": "H2O",
+          "isCorrect": true
+        },
+        {
+          "id": "inyy9xie8",
+          "text": "CO2",
+          "isCorrect": false
+        }
+      ]
+    }
+  ],
+  "isShared": false,
+  "sharePermission": "view",
+  "createdAt": "2026-05-29T09:21:07.802Z",
+  "updatedAt": "2026-05-30T11:57:08.956Z"
+}

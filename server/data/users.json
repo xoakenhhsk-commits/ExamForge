@@ -1,0 +1,55 @@
+[
+  {
+    "id": "sehfeakaf",
+    "username": "chau va dút",
+    "passwordHash": "$2b$10$2umCO2izy626Af.5BoRbDejUvk2EK7/YfPHr9BXahILrXslLINnLi",
+    "createdAt": "2026-05-28T12:04:43.361Z",
+    "fullName": "Chau Va Dút",
+    "email": "vadutchau@gmail.com",
+    "phone": "0987654321",
+    "school": "THPT CHI LẰNG",
+    "subject": "TOÁN",
+    "gradeLevel": "Khối 10",
+    "role": "Giáo viên",
+    "bio": "TÔT SNGHIEEPJ ĐH SỬ PHẠM CẦN THƠ.....",
+    "avatarColor": "#8b5cf6",
+    "updatedAt": "2026-05-29T08:17:19.401Z"
+  },
+  {
+    "id": "kf82s36zz",
+    "username": "chaua",
+    "passwordHash": "$2b$10$s7ArnChCycFi88lypVPy9eI8U6WWF6YI20ONNPM2RRCTPh3f/ugwq",
+    "createdAt": "2026-05-28T23:18:22.007Z"
+  },
+  {
+    "id": "57y727hbc",
+    "username": "testuser123",
+    "passwordHash": "$2b$10$wjGmGWFB421RPhab3luMguArEMg1R3fmrKOTm1p.B0nwSELbhxCVy",
+    "fullName": "testuser123",
+    "email": "",
+    "phone": "",
+    "school": "",
+    "subject": "",
+    "gradeLevel": "Khối 10",
+    "role": "Giáo viên",
+    "bio": "",
+    "avatarColor": "#10b981",
+    "createdAt": "2026-05-30T10:38:08.145Z"
+  },
+  {
+    "id": "udn41q4u6",
+    "username": "chaub",
+    "passwordHash": "$2b$10$1ENF1XMkSKBlNd5ky2qZMOkOsGGFOy9jIVpsM4kmptFFlRmt/CBj6",
+    "plaintextPassword": "Chauvadut@2010",
+    "fullName": "chaub",
+    "email": "",
+    "phone": "",
+    "school": "",
+    "subject": "",
+    "gradeLevel": "Khối 10",
+    "role": "Giáo viên",
+    "bio": "",
+    "avatarColor": "#f59e0b",
+    "createdAt": "2026-05-30T11:25:17.470Z"
+  }
+]

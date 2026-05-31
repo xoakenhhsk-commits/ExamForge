@@ -1,0 +1,43 @@
+{
+  "id": "qqrtqpwo9",
+  "userId": "sehfeakaf",
+  "ownerName": "chau va dút",
+  "examTitle": "ĐỀ THI TRẮC NGHIỆM MÔN...",
+  "schoolDept": "SỞ GIÁO DỤC VÀ ĐÀO TẠO...",
+  "schoolName": "TRƯỜNG THPT...",
+  "examYearSubject": "Môn thi: TOÁN HỌC - Năm học: 2025 - 2026",
+  "examDuration": "Thời gian làm bài: 90 phút (không kể thời gian giao đề)",
+  "fontFamily": "'Times New Roman', Times, serif",
+  "questions": [
+    {
+      "id": "xpkfvow6y",
+      "text": "",
+      "options": [
+        {
+          "id": "als37u245",
+          "text": "",
+          "isCorrect": false
+        },
+        {
+          "id": "6e4obm9fr",
+          "text": "",
+          "isCorrect": false
+        },
+        {
+          "id": "zbylggppv",
+          "text": "",
+          "isCorrect": false
+        },
+        {
+          "id": "twc94apqv",
+          "text": "",
+          "isCorrect": false
+        }
+      ]
+    }
+  ],
+  "isShared": false,
+  "sharePermission": "view",
+  "createdAt": "2026-05-29T08:25:31.281Z",
+  "updatedAt": "2026-05-29T09:12:27.058Z"
+}
