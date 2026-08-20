@@ -332,7 +332,7 @@ export default function DashboardDrawer({
               <School size={24} />
             </div>
             <div style={{ display: 'flex', flexDirection: 'column' }}>
-              <h3 style={{ fontSize: '1.25rem', fontWeight: '800', color: 'var(--text-main)', margin: 0, fontFamily: "'Poppins', sans-serif" }}>Không Gian Giáo Viên</h3>
+              <h3 style={{ fontSize: '1.25rem', fontWeight: '800', color: 'var(--text-main)', margin: 0, fontFamily: "'Be Vietnam Pro', sans-serif" }}>Không Gian Giáo Viên</h3>
               <span style={{ fontSize: '0.8rem', color: 'var(--text-medium)', fontWeight: '500', marginTop: '2px' }}>
                 Tài khoản: <strong style={{ color: 'var(--purple-main)' }}>{currentUser?.username}</strong>
               </span>

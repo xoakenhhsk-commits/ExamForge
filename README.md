@@ -1,16 +1,24 @@
-# React + Vite
+# ExamLab - AI Smart Exam Workspace & Online Testing Platform
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Nền tảng tạo đề thi A4 chuẩn, trộn đề siêu tốc và tổ chức thi trực tuyến thông minh với AI, tối ưu hóa trải nghiệm trên mọi thiết bị máy tính, máy tính bảng và điện thoại.
 
-Currently, two official plugins are available:
+## ✨ Tính năng nổi bật
+- **Giao diện A4 WYSIWYG**: Định dạng trực quan chuẩn Bộ Giáo dục & Đào tạo Việt Nam.
+- **Mobile Responsive**: Soạn thảo, quản lý đề thi và làm bài trực tuyến mượt mà trên điện thoại.
+- **Trộn đề thông minh**: Trộn thứ tự câu hỏi và hoán vị đáp án (A, B, C, D) sinh mã đề hàng loạt.
+- **Cộng tác & Đám mây**: Tự động đồng bộ thời gian thực, chia sẻ quyền xem/chỉnh sửa.
+- **Phòng thi Online cho Học sinh**: Hỗ trợ làm bài trắc nghiệm kèm tính năng chống gian lận (Anti-Cheat) theo dõi chuyển tab/màn hình.
+- **Xuất bản Word (.docx)**: Xuất file chuẩn in ấn chất lượng cao.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+## 🚀 Cài đặt & Chạy ứng dụng
 
-## React Compiler
+```bash
+# Cài đặt dependencies
+npm install
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+# Chạy môi trường phát triển
+npm run dev
 
-## Expanding the ESLint configuration
-
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+# Build sản phẩm
+npm run build
+```

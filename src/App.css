@@ -301,7 +301,7 @@ input:checked + .slider:before { transform: translateX(22px); }
 
 /* Glowing AI Logo Brand */
 .toolbar-brand {
-  font-family: 'Poppins', sans-serif;
+  font-family: 'Plus Jakarta Sans', 'Be Vietnam Pro', sans-serif;
   font-size: 1.25rem;
   font-weight: 800;
   color: var(--text-main);
@@ -861,7 +861,7 @@ input:checked + .slider:before { transform: translateX(22px); }
 }
 
 .auth-header { text-align: center; margin-bottom: 8px; }
-.auth-header h2 { font-size: 1.5rem; font-weight: 800; color: var(--text-main); font-family: 'Poppins', sans-serif; }
+.auth-header h2 { font-size: 1.5rem; font-weight: 800; color: var(--text-main); font-family: 'Be Vietnam Pro', sans-serif; }
 .auth-header p { font-size: 0.85rem; color: var(--text-medium); margin-top: 8px; }
 
 .auth-tabs {
@@ -950,22 +950,379 @@ input:checked + .slider:before { transform: translateX(22px); }
 }
 
 /* ==========================================================================
-   RESPONSIVENESS (Desktops, Tablets)
+   MOBILE ACTION SHEET & DRAWER STYLES
    ========================================================================== */
-@media (max-width: 1400px) {
-  .toolbar-wrapper { padding: 12px 16px; }
-  .toolbar { padding: 8px 16px; }
+.mobile-quick-actions {
+  display: none;
+}
+
+.mobile-sheet-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(15, 23, 42, 0.5);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  z-index: 2000;
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  animation: fadeIn 0.2s ease-out;
+}
+
+.mobile-sheet-content {
+  background: white;
+  width: 100%;
+  max-width: 540px;
+  max-height: 85vh;
+  border-radius: 24px 24px 0 0;
+  box-shadow: var(--shadow-floating);
+  display: flex;
+  flex-direction: column;
+  animation: slideUp 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  overflow: hidden;
+  padding-bottom: calc(16px + var(--safe-bottom));
+}
+
+.mobile-sheet-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 16px 20px;
+  border-bottom: 1px solid var(--border-color);
+}
+
+.mobile-sheet-title {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-weight: 800;
+  font-size: 1.05rem;
+  color: var(--text-main);
+}
+
+.mobile-sheet-title svg {
+  color: var(--purple-main);
+}
+
+.mobile-sheet-close {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: var(--bg-workspace);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--text-muted);
+}
+
+.mobile-sheet-body {
+  padding: 20px;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.mobile-sheet-section {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.mobile-section-label {
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.mobile-controls-row {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+
+.mobile-font-select {
+  flex: 1;
+  padding: 10px 14px;
+}
+
+.mobile-zoom {
+  background: var(--bg-workspace);
+}
+
+.mobile-actions-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+}
+
+.mobile-action-btn {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 12px 14px;
+  background: var(--bg-workspace);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-md);
+  color: var(--text-main);
+  font-weight: 600;
+  font-size: 0.85rem;
+  text-align: left;
+  transition: all var(--transition-fast);
+}
+
+.mobile-action-btn:hover, .mobile-action-btn:active {
+  background: white;
+  border-color: var(--purple-main);
+  color: var(--purple-main);
+}
+
+.mobile-action-btn.primary {
+  background: var(--purple-light);
+  border-color: #d8b4fe;
+  color: var(--purple-dark);
+}
+
+.mobile-action-btn.export {
+  background: #f0fdf4;
+  border-color: #bbf7d0;
+  color: #15803d;
+}
+
+.mobile-user-section {
+  padding-top: 10px;
+  border-top: 1px solid var(--border-color);
+}
+
+.mobile-user-card {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: var(--bg-workspace);
+  padding: 12px 16px;
+  border-radius: var(--radius-lg);
+}
+
+.mobile-user-info {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.user-role-tag {
+  display: block;
+  font-size: 0.75rem;
+  color: var(--text-muted);
+  font-weight: 500;
+}
+
+.btn-full-width {
+  width: 100%;
+  padding: 14px;
+}
+
+/* ==========================================================================
+   RESPONSIVENESS (Desktops, Tablets & Mobile Phones)
+   ========================================================================== */
+@media (max-width: 1200px) {
   .toolbar .btn span:not(.zoom-value):not(.username-text) { display: none; }
   .toolbar .btn { padding: 10px; border-radius: 12px; }
-  .toolbar-brand { font-size: 1.1rem; gap: 8px; }
-  .toolbar-brand .ai-logo-glow { width: 28px; height: 28px; }
+  .toolbar-brand { font-size: 1.15rem; }
 }
 
 @media (max-width: 900px) {
-  .toolbar-wrapper { padding: 8px; }
-  .toolbar { padding: 8px 12px; border-radius: 16px; }
-  .toolbar-left-group, .toolbar-controls, .toolbar-actions { gap: 8px; }
-  .sync-badge span { display: none; }
-  .font-selector { width: 80px; padding: 6px; font-size: 0.75rem; }
-  .btn-zoom { width: 28px; height: 28px; }
+  .toolbar-wrapper { 
+    padding: 10px 12px;
+    padding-top: calc(10px + var(--safe-top));
+  }
+  
+  .toolbar { 
+    padding: 8px 12px; 
+    border-radius: 18px; 
+    min-height: 52px;
+  }
+  
+  .desktop-controls, 
+  .desktop-actions, 
+  .btn-desktop-only { 
+    display: none !important; 
+  }
+  
+  .mobile-quick-actions { 
+    display: flex; 
+    align-items: center; 
+    gap: 8px; 
+  }
+  
+  .btn-mobile-quick {
+    padding: 8px 12px;
+    font-size: 0.82rem;
+    border-radius: 12px;
+  }
+  
+  .btn-mobile-menu-toggle {
+    width: 40px;
+    height: 40px;
+    padding: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 12px;
+  }
+
+  .toolbar-brand { 
+    font-size: 1.1rem; 
+    gap: 8px; 
+  }
+  
+  .toolbar-brand .ai-logo-glow { 
+    width: 32px; 
+    height: 32px; 
+  }
+  
+  .sync-badge span { 
+    display: none; 
+  }
 }
+
+/* Fluid Mobile Paper & Workspace Styling (Phones & Small Tablets) */
+@media (max-width: 850px) {
+  .workspace {
+    padding: 10px 8px calc(40px + var(--safe-bottom)) 8px !important;
+    gap: 20px !important;
+    width: 100% !important;
+  }
+
+  .document-page-wrapper {
+    width: 100% !important;
+    max-width: 100% !important;
+    padding: 0 !important;
+    display: flex !important;
+    justify-content: center !important;
+  }
+
+  .document-page {
+    width: 100% !important;
+    min-width: 0 !important;
+    max-width: 100% !important;
+    height: auto !important;
+    min-height: auto !important;
+    padding: 24px 14px 48px 14px !important;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06) !important;
+    border-radius: 16px !important;
+    margin: 0 !important;
+  }
+
+  .page-footer {
+    position: relative !important;
+    bottom: auto !important;
+    left: auto !important;
+    right: auto !important;
+    margin-top: 32px !important;
+    padding-top: 16px !important;
+  }
+
+  /* Vietnamese High School Header on Mobile */
+  .exam-school-header {
+    grid-template-columns: 1fr !important;
+    gap: 14px !important;
+    padding-bottom: 16px !important;
+    margin-bottom: 24px !important;
+  }
+
+  .header-left {
+    align-items: center !important;
+    text-align: center !important;
+  }
+
+  .header-right {
+    border-left: none !important;
+    border-top: 1px dashed var(--border-color) !important;
+    padding-left: 0 !important;
+    padding-top: 14px !important;
+    align-items: center !important;
+    text-align: center !important;
+  }
+
+  .dept-input { font-size: 0.78rem !important; }
+  .school-input { font-size: 0.88rem !important; }
+  .exam-title-input { font-size: 0.98rem !important; }
+  .sub-input { font-size: 0.8rem !important; }
+
+  /* Question Blocks on Mobile */
+  .question-list {
+    gap: 16px !important;
+  }
+
+  .question-block {
+    padding: 14px 10px !important;
+    border-radius: 12px !important;
+    background: #fafbfc !important;
+    border: 1px solid var(--border-color) !important;
+  }
+
+  .delete-btn {
+    opacity: 0.9 !important;
+    transform: scale(1) !important;
+    top: 8px !important;
+    right: 8px !important;
+    padding: 6px !important;
+    border-radius: 8px !important;
+  }
+
+  .question-row {
+    margin-bottom: 10px !important;
+    padding-right: 32px !important; /* Space for delete button */
+  }
+
+  .question-label {
+    font-size: 0.95rem !important;
+    font-weight: 800 !important;
+  }
+
+  .text-area-auto {
+    font-size: 0.92rem !important;
+    padding: 4px 6px !important;
+  }
+
+  .options-grid {
+    padding-left: 4px !important;
+    gap: 8px !important;
+  }
+
+  .options-grid.grid-2 {
+    grid-template-columns: 1fr !important;
+    gap: 8px !important;
+  }
+
+  .option-label {
+    width: 28px !important;
+    font-size: 0.95rem !important;
+  }
+
+  /* Modals & Drawer on Mobile */
+  .modal-content, 
+  .auth-modal-content {
+    width: calc(100vw - 20px) !important;
+    max-width: 440px !important;
+    padding: 24px 16px !important;
+    border-radius: 20px !important;
+    max-height: 90vh !important;
+    overflow-y: auto !important;
+  }
+
+  .dashboard-drawer {
+    width: 100% !important;
+    max-width: 100vw !important;
+  }
+
+  .code-type-cards {
+    grid-template-columns: 1fr !important;
+  }
+}
+

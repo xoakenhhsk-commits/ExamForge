@@ -1,5 +1,5 @@
 import React from 'react';
-import { ArrowRight, FileText, Share2, Layers, Cloud } from 'lucide-react';
+import { ArrowRight, FileText, Share2, Layers, Cloud, Sparkles, Smartphone, CheckCircle } from 'lucide-react';
 import './LandingPage.css';
 
 export default function LandingPage({ onStart, onStudentPortal }) {
@@ -7,28 +7,40 @@ export default function LandingPage({ onStart, onStudentPortal }) {
     <div className="landing-container">
       <nav className="landing-nav">
         <div className="landing-logo">
-          <img src="/logo.png" alt="ExamForge Logo" />
-          <span>ExamForge</span>
+          <img src="/logo.svg" alt="ExamLab Logo" />
+          <span>ExamLab</span>
         </div>
-        <div style={{ display: 'flex', gap: '12px' }}>
-          <button className="btn btn-secondary" onClick={onStudentPortal}>Học sinh: Vào Thi Online</button>
-          <button className="btn btn-primary" onClick={onStart}>Truy cập Ứng dụng <ArrowRight size={16} /></button>
+        <div className="landing-nav-actions">
+          <button className="btn btn-secondary btn-nav" onClick={onStudentPortal}>
+            <span className="nav-text-desktop">Học sinh Thi Online</span>
+            <span className="nav-text-mobile">Thi Online</span>
+          </button>
+          <button className="btn btn-primary btn-nav" onClick={onStart}>
+            <span className="nav-text-desktop">Soạn Đề Thi</span>
+            <span className="nav-text-mobile">Soạn đề</span>
+            <ArrowRight size={14} />
+          </button>
         </div>
       </nav>
 
       <main className="landing-main">
         <div className="hero-section">
-          <div className="hero-badge">✨ Nền tảng Tạo Đề thi Hiện đại nhất</div>
-          <h1 className="hero-title">Tạo & Trộn Đề Thi <br/><span className="gradient-text">Siêu Tốc, Thông Minh</span></h1>
+          <div className="hero-badge">
+            <Sparkles size={16} /> Nền tảng Tạo Đề thi Chuẩn & Thông minh AI
+          </div>
+          <h1 className="hero-title">
+            Tạo & Trộn Đề Thi <br/>
+            <span className="gradient-text">Siêu Tốc, Chuẩn A4</span>
+          </h1>
           <p className="hero-subtitle">
-            ExamForge giúp giáo viên xây dựng, định dạng, trộn và chia sẻ đề thi chuyên nghiệp chỉ trong vài phút. 
-            Lưu trữ đám mây an toàn, cộng tác thời gian thực.
+            ExamLab giúp giáo viên xây dựng, định dạng, trộn và chia sẻ đề thi chuyên nghiệp chỉ trong vài phút. 
+            Tương thích hoàn hảo mọi thiết bị, lưu trữ đám mây và thi trực tuyến tức thì.
           </p>
           <div className="hero-actions">
             <button className="btn btn-primary btn-large" onClick={onStart}>
               Bắt đầu tạo đề thi ngay <ArrowRight size={18} />
             </button>
-            <button className="btn btn-secondary btn-large" onClick={onStudentPortal} style={{ padding: '14px 24px' }}>
+            <button className="btn btn-secondary btn-large btn-student-cta" onClick={onStudentPortal}>
               Dành cho Học sinh: Nhập Mã Phòng
             </button>
           </div>
@@ -48,19 +60,20 @@ export default function LandingPage({ onStart, onStudentPortal }) {
           <div className="feature-card">
             <div className="feature-icon"><Cloud size={24} /></div>
             <h3>Đồng bộ Đám mây</h3>
-            <p>Dữ liệu được tự động lưu ngay khi bạn gõ. Không bao giờ lo mất dữ liệu nữa.</p>
+            <p>Dữ liệu được tự động lưu ngay khi bạn gõ. Không bao giờ lo mất dữ liệu.</p>
           </div>
           <div className="feature-card">
-            <div className="feature-icon"><Share2 size={24} /></div>
-            <h3>Cộng tác Thời gian thực</h3>
-            <p>Gửi link cho đồng nghiệp để cùng soạn đề thi. Cập nhật ngay lập tức theo từng giây.</p>
+            <div className="feature-icon"><Smartphone size={24} /></div>
+            <h3>Tối ưu Di động & Online</h3>
+            <p>Làm bài thi mượt mà trên điện thoại, máy tính bảng với tính năng chống gian lận thông minh.</p>
           </div>
         </div>
       </main>
       
       <footer className="landing-footer">
-        <p>&copy; {new Date().getFullYear()} ExamForge. Nền tảng Giáo dục Hiện đại.</p>
+        <p>&copy; {new Date().getFullYear()} ExamLab. Nền tảng Giáo dục & Đề thi Thông minh.</p>
       </footer>
     </div>
   );
 }
+
