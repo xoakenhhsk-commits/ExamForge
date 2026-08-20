@@ -72,7 +72,7 @@ export default function Toolbar({
     <div className="toolbar-wrapper">
       <div className="toolbar">
         {/* SECTION 1: Brand & Status (Left) */}
-        <div className="toolbar-left-group">
+        <div className="toolbar-section toolbar-left">
           <div className="toolbar-brand" title="ExamLab - AI Smart Exam Workspace">
             <div className="ai-logo-glow">
               <img src="/logo.svg" alt="ExamLab Logo" />
@@ -80,141 +80,148 @@ export default function Toolbar({
             <span className="brand-title-text">ExamLab</span>
           </div>
 
+          {getSyncStatusBadge()}
+          {isReadOnly && (
+            <div className="read-only-badge" title="Chế độ chỉ xem">
+              👁️ Chỉ xem
+            </div>
+          )}
+
           {isCloudExam && !isReadOnly && currentUser && (
             <button 
               className="btn btn-share btn-desktop-only" 
               onClick={onOpenShareModal} 
-              title="Chia sẻ & Cộng tác"
+              title="Chia sẻ & Cộng tác thời gian thực"
             >
-              <Share2 size={16} />
+              <Share2 size={15} />
               <span>Chia sẻ</span>
             </button>
           )}
-
-          {getSyncStatusBadge()}
-          {isReadOnly && (
-            <div className="read-only-badge" title="Chỉ xem">
-              👁️ Chỉ xem
-            </div>
-          )}
         </div>
         
-        {/* SECTION 2: Formatting & AI Tools (Center - Desktop) */}
-        <div className="toolbar-controls desktop-controls">
-          <select 
-            className="font-selector"
-            value={fontFamily}
-            onChange={(e) => setFontFamily(e.target.value)}
-            disabled={isReadOnly}
-            aria-label="Chọn font chữ"
-          >
-            <option value="'Inter', sans-serif">Inter</option>
-            <option value="'Be Vietnam Pro', sans-serif">Be Vietnam Pro</option>
-            <option value="'Times New Roman', Times, serif">Times New Roman</option>
-            <option value="Arial, sans-serif">Arial</option>
-          </select>
+        {/* SECTION 2: Formatting & AI Tools (Center) */}
+        <div className="toolbar-section toolbar-center desktop-controls">
+          <div className="toolbar-group formatting-group">
+            <select 
+              className="font-selector"
+              value={fontFamily}
+              onChange={(e) => setFontFamily(e.target.value)}
+              disabled={isReadOnly}
+              aria-label="Chọn font chữ"
+            >
+              <option value="'Be Vietnam Pro', sans-serif">Be Vietnam Pro</option>
+              <option value="'Inter', sans-serif">Inter</option>
+              <option value="'Times New Roman', Times, serif">Times New Roman</option>
+              <option value="Arial, sans-serif">Arial</option>
+            </select>
 
-          <div className="zoom-controls">
-            <button className="btn-zoom" onClick={() => setZoom(prev => Math.max(50, prev - 10))} title="Thu nhỏ">
-              <ZoomOut size={14} />
+            <div className="zoom-controls">
+              <button className="btn-zoom" onClick={() => setZoom(prev => Math.max(50, prev - 10))} title="Thu nhỏ (Ctrl -)">
+                <ZoomOut size={14} />
+              </button>
+              <span className="zoom-value">{zoom}%</span>
+              <button className="btn-zoom" onClick={() => setZoom(prev => Math.min(200, prev + 10))} title="Phóng to (Ctrl +)">
+                <ZoomIn size={14} />
+              </button>
+            </div>
+
+            <button 
+              className={`btn btn-ai-glow ${showAnswers ? 'active' : ''}`}
+              onClick={() => setShowAnswers(!showAnswers)}
+              title="AI Hiển thị / Ẩn đáp án đúng"
+            >
+              <Sparkles size={15} />
+              <span>{showAnswers ? 'Đáp án: Bật' : 'Đáp án: Tắt'}</span>
             </button>
-            <span className="zoom-value">{zoom}%</span>
-            <button className="btn-zoom" onClick={() => setZoom(prev => Math.min(200, prev + 10))} title="Phóng to">
-              <ZoomIn size={14} />
+          </div>
+        </div>
+
+        {/* SECTION 3: Document Actions & Profile (Right) */}
+        <div className="toolbar-section toolbar-right desktop-actions">
+          {!isReadOnly && (
+            <div className="toolbar-group action-buttons-group">
+              <button className="btn btn-primary btn-add-q" onClick={onAddQuestion} title="Thêm câu hỏi mới vào đề thi">
+                <Plus size={16} /> <span>Thêm câu hỏi</span>
+              </button>
+              <button className="btn btn-secondary" onClick={onOpenBulkImport} title="Nhập hàng loạt câu hỏi từ văn bản Word / Text">
+                <FileText size={15} /> <span>Nhập nhanh</span>
+              </button>
+              <button className="btn btn-secondary" onClick={onShuffle} title="Trộn ngẫu nhiên thứ tự các câu hỏi">
+                <Shuffle size={15} /> <span>Trộn đề</span>
+              </button>
+              <button className="btn btn-secondary" onClick={onOpenBulkModal} title="Trộn hoán vị đáp án A, B, C, D tạo nhiều mã đề">
+                <Layers size={15} /> <span>Trộn đáp án</span>
+              </button>
+            </div>
+          )}
+
+          <div className="toolbar-group save-export-group">
+            {!isCloudExam && !isReadOnly && (
+              <button className="btn btn-secondary" onClick={onSave} title="Lưu đề thi vào bộ nhớ trình duyệt (Ctrl+S)">
+                <Save size={15} /> <span>Lưu</span>
+              </button>
+            )}
+
+            <button className="btn btn-secondary btn-export-word" onClick={onExport} title="Xuất đề thi chuẩn định dạng Microsoft Word (.docx)">
+              <Download size={15} /> <span>Xuất Word</span>
             </button>
           </div>
 
-          <button 
-            className={`btn btn-ai-glow ${showAnswers ? 'active' : ''}`}
-            onClick={() => setShowAnswers(!showAnswers)}
-            title="AI Hiển thị/Ẩn đáp án"
-          >
-            <Sparkles size={16} />
-            <span>{showAnswers ? 'Đáp án: Bật' : 'Đáp án: Tắt'}</span>
-          </button>
-        </div>
-
-        {/* SECTION 3: Document Actions & Profile (Right - Desktop) */}
-        <div className="toolbar-actions desktop-actions">
-          {!isReadOnly && (
-            <>
-              {currentUser && (
-                <button className="btn btn-primary" onClick={onOpenDashboard} title="Không gian giáo viên">
-                  <School size={16} /> <span>Không gian GV</span>
-                </button>
-              )}
-              <button className="btn btn-primary" onClick={onAddQuestion} title="Thêm câu hỏi">
-                <Plus size={16} /> <span>Thêm câu hỏi</span>
-              </button>
-              <button className="btn btn-secondary" onClick={onOpenBulkImport} title="Nhập nhanh">
-                <FileText size={16} /> <span>Nhập nhanh</span>
-              </button>
-              <button className="btn btn-secondary" onClick={onShuffle} title="Trộn đề">
-                <Shuffle size={16} /> <span>Trộn đề</span>
-              </button>
-              <button className="btn btn-secondary" onClick={onOpenBulkModal} title="Trộn đáp án">
-                <Layers size={16} /> <span>Trộn đáp án</span>
-              </button>
-            </>
-          )}
-
-          {!isCloudExam && !isReadOnly && (
-            <button className="btn btn-secondary" onClick={onSave} title="Lưu vào trình duyệt (Ctrl+S)">
-              <Save size={16} /> <span>Lưu</span>
-            </button>
-          )}
-
-          <button className="btn btn-secondary" onClick={onExport} title="Xuất Word">
-            <Download size={16} /> <span>Xuất Word</span>
-          </button>
-
           <div className="toolbar-divider"></div>
 
-          {/* User Account Avatar */}
-          {currentUser ? (
-            <>
-              <div className="user-profile-menu">
-                <div className="profile-dropdown-wrapper">
-                  <button 
-                    className="btn-profile-avatar"
-                    onClick={() => setShowUserDropdown(!showUserDropdown)}
-                    title={`Tài khoản: ${currentUser.username}`}
-                  >
-                    <div style={{ display: 'flex', alignItems: 'center' }}>
-                      <div className="avatar-circle" style={{ backgroundColor: currentUser.avatarColor || '#8b5cf6' }}>
-                        {currentUser.username.substring(0, 2).toUpperCase()}
-                      </div>
-                      <span className="username-text">{currentUser.username}</span>
-                    </div>
-                  </button>
-
-                  {showUserDropdown && (
-                    <>
-                      <div className="dropdown-overlay" onClick={() => setShowUserDropdown(false)}></div>
-                      <div className="profile-dropdown-content">
-                        <div className="dropdown-user-info">
-                          <User size={14} />
-                          <span>{currentUser.username}</span>
-                        </div>
-                      </div>
-                    </>
-                  )}
-                </div>
-              </div>
-              
-              <button 
-                className="btn btn-secondary btn-logout" 
-                onClick={onLogout}
-                title="Đăng xuất"
-              >
-                <LogOut size={16} /> <span>Đăng xuất</span>
+          {/* Teacher Dashboard & Profile */}
+          <div className="toolbar-group user-group">
+            {!isReadOnly && currentUser && (
+              <button className="btn btn-teacher-portal" onClick={onOpenDashboard} title="Mở Không gian quản lý đề thi và phòng thi của Giáo viên">
+                <School size={15} /> <span>Không gian GV</span>
               </button>
-            </>
-          ) : (
-            <button className="btn btn-primary" onClick={onOpenAuthModal}>
-              <LogIn size={16} /> <span>Đăng nhập</span>
-            </button>
-          )}
+            )}
+
+            {currentUser ? (
+              <>
+                <div className="user-profile-menu">
+                  <div className="profile-dropdown-wrapper">
+                    <button 
+                      className="btn-profile-avatar"
+                      onClick={() => setShowUserDropdown(!showUserDropdown)}
+                      title={`Tài khoản: ${currentUser.username}`}
+                    >
+                      <div style={{ display: 'flex', alignItems: 'center' }}>
+                        <div className="avatar-circle" style={{ backgroundColor: currentUser.avatarColor || '#8b5cf6' }}>
+                          {currentUser.username.substring(0, 2).toUpperCase()}
+                        </div>
+                        <span className="username-text">{currentUser.username}</span>
+                      </div>
+                    </button>
+
+                    {showUserDropdown && (
+                      <>
+                        <div className="dropdown-overlay" onClick={() => setShowUserDropdown(false)}></div>
+                        <div className="profile-dropdown-content">
+                          <div className="dropdown-user-info">
+                            <User size={14} />
+                            <span>{currentUser.username}</span>
+                          </div>
+                        </div>
+                      </>
+                    )}
+                  </div>
+                </div>
+                
+                <button 
+                  className="btn btn-secondary btn-logout" 
+                  onClick={onLogout}
+                  title="Đăng xuất khỏi hệ thống"
+                >
+                  <LogOut size={15} /> <span>Đăng xuất</span>
+                </button>
+              </>
+            ) : (
+              <button className="btn btn-primary btn-login" onClick={onOpenAuthModal} title="Đăng nhập hoặc tạo tài khoản mới">
+                <LogIn size={15} /> <span>Đăng nhập</span>
+              </button>
+            )}
+          </div>
         </div>
 
         {/* MOBILE QUICK BAR (Visible on screens < 900px) */}
