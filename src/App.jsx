@@ -177,22 +177,51 @@ function App() {
     if (localData) {
       try {
         const data = JSON.parse(localData);
-        setExamTitle(data.examTitle || 'ĐỀ THI TRẮC NGHIỆM MÔN...');
-        setQuestions(data.questions || [createEmptyQuestion()]);
-        setFontFamily(data.fontFamily || "'Times New Roman', Times, serif");
-        setSchoolDept(data.schoolDept || 'SỞ GIÁO DỤC VÀ ĐÀO TẠO...');
-        setSchoolName(data.schoolName || 'TRƯỜNG THPT...');
-        setExamYearSubject(data.examYearSubject || '');
-        setExamDuration(data.examDuration || '');
+        if (data.questions && data.questions.length > 0) {
+          setExamTitle(data.examTitle || 'ĐỀ THI MÔN TOÁN');
+          setQuestions(data.questions);
+          setFontFamily(data.fontFamily || "'Times New Roman', Times, serif");
+          setSchoolDept(data.schoolDept || 'SỞ GIÁO DỤC VÀ ĐÀO TẠO AN GIANG');
+          setSchoolName(data.schoolName || 'TRƯỜNG THPT CHI LĂNG');
+          setExamYearSubject(data.examYearSubject || 'Môn thi: TOÁN HỌC - Năm học: 2025 - 2026');
+          setExamDuration(data.examDuration || 'Thời gian làm bài: 90 phút (không kể thời gian phát đề)');
+          setIsCloudExam(false);
+          setCurrentExamId(null);
+          setIsReadOnly(false);
+          return;
+        }
       } catch (e) {
-        setQuestions([createEmptyQuestion()]);
+        console.error(e);
       }
-    } else {
-      setQuestions([createEmptyQuestion()]);
     }
-    setIsCloudExam(false);
-    setCurrentExamId(null);
-    setIsReadOnly(false);
+
+    // Load real default exam from server so user always has real data working
+    fetch('/api/default-exam')
+      .then(res => {
+        if (!res.ok) throw new Error('No default exam');
+        return res.json();
+      })
+      .then(data => {
+        if (data && data.questions && data.questions.length > 0) {
+          setExamTitle(data.examTitle || 'ĐỀ THI MÔN TOÁN');
+          setQuestions(data.questions);
+          setFontFamily(data.fontFamily || "'Times New Roman', Times, serif");
+          setSchoolDept(data.schoolDept || 'SỞ GIÁO DỤC VÀ ĐÀO TẠO AN GIANG');
+          setSchoolName(data.schoolName || 'TRƯỜNG THPT CHI LĂNG');
+          setExamYearSubject(data.examYearSubject || 'Môn thi: TOÁN HỌC - Năm học: 2025 - 2026');
+          setExamDuration(data.examDuration || 'Thời gian làm bài: 90 phút (không kể thời gian phát đề)');
+        } else {
+          setQuestions([createEmptyQuestion()]);
+        }
+      })
+      .catch(() => {
+        setQuestions([createEmptyQuestion()]);
+      })
+      .finally(() => {
+        setIsCloudExam(false);
+        setCurrentExamId(null);
+        setIsReadOnly(false);
+      });
   };
 
   const loadExamDetails = (examId, jwtToken) => {

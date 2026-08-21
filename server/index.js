@@ -132,6 +132,21 @@ app.get('/api/admin/users', (req, res) => {
 });
 
 // EXAMS API ENDPOINTS
+app.get('/api/default-exam', (req, res) => {
+  try {
+    let exam = db.getExam('hhto8t6o6') || db.getExam('kad7rsbzt');
+    if (!exam) {
+      const exams = db.getUserExams('sehfeakaf');
+      if (exams.length > 0) exam = db.getExam(exams[0].id);
+    }
+    if (exam) {
+      return res.json(exam);
+    }
+    res.status(404).json({ message: 'No default exam found' });
+  } catch (err) {
+    res.status(500).json({ message: err.message });
+  }
+});
 
 // 1. List exams of logged in user
 app.get('/api/exams', authenticateToken, requireAuth, (req, res) => {

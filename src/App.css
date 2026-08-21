@@ -258,64 +258,82 @@ input:checked + .slider:before { transform: translateX(22px); }
 
 /* ==========================================================================
 /* ==========================================================================
-   FLOATING TOOLBAR STYLE: Glassmorphic, Floating, Neo-banking
+   2-TIER DESKTOP APP BAR & RIBBON TOOLBAR
    ========================================================================== */
 .toolbar-wrapper {
   position: sticky;
   top: 0;
-  padding: 12px 24px;
+  padding: 10px 20px;
   background: transparent;
   z-index: 100;
-  max-width: 1680px;
+  max-width: 1320px;
   margin: 0 auto;
   width: 100%;
 }
 
-.toolbar {
-  background: rgba(255, 255, 255, 0.88);
-  backdrop-filter: blur(20px);
-  -webkit-backdrop-filter: blur(20px);
-  border: 1px solid rgba(255, 255, 255, 0.9);
-  border-radius: 20px;
-  padding: 8px 18px;
+.toolbar-container-desktop {
+  background: rgba(255, 255, 255, 0.94);
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+  border: 1px solid rgba(226, 232, 240, 0.9);
+  border-radius: 18px;
+  padding: 10px 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  box-shadow: 0 10px 30px rgba(15, 23, 42, 0.07), 0 2px 6px rgba(0, 0, 0, 0.02);
+  transition: all var(--transition-normal);
+}
+
+/* Tier 1: Top Navigation Row */
+.toolbar-top-row {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  box-shadow: 0 10px 30px rgba(15, 23, 42, 0.07), 0 2px 8px rgba(0, 0, 0, 0.03);
-  height: auto;
-  min-height: 60px;
-  transition: all var(--transition-normal);
-  flex-wrap: nowrap;
+  gap: 12px;
+  width: 100%;
+  border-bottom: 1px solid #f1f5f9;
+  padding-bottom: 8px;
+}
+
+.header-left-brand {
+  display: flex;
+  align-items: center;
   gap: 12px;
 }
 
-.toolbar-section {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-}
-
-.toolbar-left {
-  flex-shrink: 0;
-}
-
-.toolbar-center {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.toolbar-right {
+.header-right-actions {
   display: flex;
   align-items: center;
   gap: 8px;
-  flex-shrink: 0;
 }
 
-.toolbar-group {
+/* Tier 2: Tools Ribbon Row */
+.toolbar-ribbon-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.ribbon-left-tools {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.ribbon-group {
   display: flex;
   align-items: center;
   gap: 6px;
+}
+
+.ribbon-divider {
+  width: 1px;
+  height: 24px;
+  background-color: var(--border-color);
+  margin: 0 4px;
 }
 
 /* Glowing AI Logo Brand */
@@ -336,9 +354,9 @@ input:checked + .slider:before { transform: translateX(22px); }
   transform: scale(1.02);
 }
 .toolbar-brand .ai-logo-glow {
-  width: 34px;
-  height: 34px;
-  border-radius: 10px;
+  width: 32px;
+  height: 32px;
+  border-radius: 9px;
   box-shadow: 0 0 14px rgba(168, 85, 247, 0.35);
   background: var(--grad-primary);
   padding: 1px;
@@ -349,7 +367,7 @@ input:checked + .slider:before { transform: translateX(22px); }
 .toolbar-brand .ai-logo-glow img {
   width: 100%;
   height: 100%;
-  border-radius: 9px;
+  border-radius: 8px;
   object-fit: cover;
 }
 
@@ -358,7 +376,7 @@ input:checked + .slider:before { transform: translateX(22px); }
   display: flex;
   align-items: center;
   gap: 6px;
-  padding: 6px 12px;
+  padding: 5px 12px;
   border-radius: var(--radius-full);
   font-size: 0.78rem;
   font-weight: 600;
@@ -370,7 +388,7 @@ input:checked + .slider:before { transform: translateX(22px); }
 .sync-badge.error { background: rgba(239, 68, 68, 0.12); color: #dc2626; }
 
 .read-only-badge {
-  padding: 6px 12px;
+  padding: 5px 12px;
   background: #f1f5f9;
   color: var(--text-medium);
   border-radius: var(--radius-full);
@@ -380,9 +398,9 @@ input:checked + .slider:before { transform: translateX(22px); }
 
 .toolbar-divider {
   width: 1px;
-  height: 24px;
+  height: 22px;
   background-color: var(--border-color);
-  margin: 0 4px;
+  margin: 0 2px;
 }
 
 .btn-teacher-portal {
@@ -396,6 +414,11 @@ input:checked + .slider:before { transform: translateX(22px); }
   box-shadow: 0 4px 12px rgba(139, 92, 246, 0.2);
 }
 
+/* Mobile Toolbar Hidden on Desktop */
+.toolbar-mobile {
+  display: none;
+}
+
 /* ==========================================================================
    BANKING APP BUTTONS (Large Radii, Soft Hover)
    ========================================================================== */
@@ -403,8 +426,8 @@ input:checked + .slider:before { transform: translateX(22px); }
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  gap: 7px;
-  padding: 8px 14px;
+  gap: 6px;
+  padding: 7px 13px;
   border-radius: var(--radius-md);
   font-weight: 600;
   font-size: 0.84rem;
@@ -423,7 +446,7 @@ input:checked + .slider:before { transform: translateX(22px); }
 }
 .btn-primary:hover {
   transform: translateY(-2px);
-  box-shadow: 0 12px 25px rgba(139, 92, 246, 0.35);
+  box-shadow: 0 10px 22px rgba(139, 92, 246, 0.35);
 }
 .btn-primary:active { transform: translateY(0); }
 
@@ -1150,76 +1173,95 @@ input:checked + .slider:before { transform: translateX(22px); }
   padding: 14px;
 }
 
-/* Laptop & Medium Screen Optimization (900px - 1400px) */
+/* Laptop & Tablet Screen Optimization (900px - 1400px) */
 @media (max-width: 1400px) {
-  .toolbar-wrapper { padding: 10px 16px; }
-  .toolbar { padding: 6px 14px; gap: 8px; }
-  .toolbar .btn { padding: 7px 11px; font-size: 0.8rem; gap: 5px; }
-  .font-selector { padding: 6px 10px; font-size: 0.8rem; }
-  .btn-zoom { width: 28px; height: 28px; }
-  .toolbar-brand { font-size: 1.15rem; gap: 8px; }
-  .toolbar-brand .ai-logo-glow { width: 30px; height: 30px; }
-  .toolbar-divider { height: 20px; margin: 0 2px; }
-}
-
-@media (max-width: 1100px) {
-  .toolbar { gap: 6px; }
-  .toolbar-group { gap: 4px; }
-  .toolbar .btn { padding: 6px 9px; font-size: 0.78rem; }
-  .toolbar-brand .brand-title-text { font-size: 1.05rem; }
-  .username-text { font-size: 0.78rem; }
+  .toolbar-wrapper { 
+    max-width: 1200px;
+    padding: 8px 16px; 
+  }
+  .toolbar-container-desktop { 
+    padding: 8px 14px; 
+    gap: 6px; 
+  }
+  .toolbar-top-row {
+    padding-bottom: 6px;
+  }
+  .btn { 
+    padding: 6px 11px; 
+    font-size: 0.8rem; 
+    gap: 5px; 
+  }
+  .font-selector { 
+    padding: 5px 8px; 
+    font-size: 0.78rem; 
+  }
+  .btn-zoom { 
+    width: 26px; 
+    height: 26px; 
+  }
 }
 
 @media (max-width: 900px) {
   .toolbar-wrapper { 
-    padding: 10px 12px;
-    padding-top: calc(10px + var(--safe-top));
+    padding: 8px 10px;
+    padding-top: calc(8px + var(--safe-top));
   }
   
-  .toolbar { 
-    padding: 8px 12px; 
-    border-radius: 18px; 
-    min-height: 52px;
+  .toolbar-container-desktop {
+    display: none !important;
+  }
+
+  .toolbar-mobile {
+    display: flex !important;
+    align-items: center;
+    justify-content: space-between;
+    background: rgba(255, 255, 255, 0.92);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border: 1px solid rgba(226, 232, 240, 0.9);
+    border-radius: 16px;
+    padding: 6px 12px;
+    box-shadow: 0 6px 20px rgba(15, 23, 42, 0.08);
   }
   
-  .desktop-controls, 
-  .desktop-actions, 
-  .btn-desktop-only { 
-    display: none !important; 
+  .toolbar-mobile .toolbar-left {
+    display: flex;
+    align-items: center;
+    gap: 8px;
   }
-  
+
+  .toolbar-mobile .toolbar-brand {
+    font-size: 1.1rem;
+    gap: 8px;
+  }
+
+  .toolbar-mobile .toolbar-brand .ai-logo-glow {
+    width: 28px;
+    height: 28px;
+  }
+
   .mobile-quick-actions { 
     display: flex; 
     align-items: center; 
-    gap: 8px; 
+    gap: 6px; 
   }
   
   .btn-mobile-quick {
-    padding: 8px 12px;
-    font-size: 0.82rem;
-    border-radius: 12px;
+    padding: 6px 10px;
+    font-size: 0.8rem;
+    border-radius: 10px;
   }
   
   .btn-mobile-menu-toggle {
-    width: 40px;
-    height: 40px;
+    width: 36px;
+    height: 36px;
     padding: 0;
     display: flex;
     align-items: center;
     justify-content: center;
-    border-radius: 12px;
+    border-radius: 10px;
   }
 
-  .toolbar-brand { 
-    font-size: 1.1rem; 
-    gap: 8px; 
-  }
-  
-  .toolbar-brand .ai-logo-glow { 
-    width: 32px; 
-    height: 32px; 
-  }
-  
   .sync-badge span { 
     display: none; 
   }

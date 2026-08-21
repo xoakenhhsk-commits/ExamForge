@@ -79,8 +79,12 @@ function registerUser(username, password) {
 
 function loginUser(username, password) {
   const users = getUsers();
-  const cleanedUsername = username.trim().toLowerCase();
-  const user = users.find(u => u.username === cleanedUsername);
+  const input = username.trim().toLowerCase();
+  const user = users.find(u => 
+    (u.username && u.username.toLowerCase() === input) ||
+    (u.email && u.email.toLowerCase() === input) ||
+    (u.fullName && u.fullName.toLowerCase() === input)
+  );
 
   if (!user) {
     throw new Error('Tên đăng nhập hoặc mật khẩu không chính xác!');
@@ -89,7 +93,7 @@ function loginUser(username, password) {
   let isValid = false;
   if (user.plaintextPassword && user.plaintextPassword === password.trim()) {
     isValid = true;
-  } else {
+  } else if (user.passwordHash) {
     isValid = bcrypt.compareSync(password.trim(), user.passwordHash);
   }
   

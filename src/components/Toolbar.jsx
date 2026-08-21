@@ -70,92 +70,45 @@ export default function Toolbar({
 
   return (
     <div className="toolbar-wrapper">
-      <div className="toolbar">
-        {/* SECTION 1: Brand & Status (Left) */}
-        <div className="toolbar-section toolbar-left">
-          <div className="toolbar-brand" title="ExamLab - AI Smart Exam Workspace">
-            <div className="ai-logo-glow">
-              <img src="/logo.svg" alt="ExamLab Logo" />
+      <div className="toolbar-container-desktop">
+        {/* TIER 1: APP HEADER BAR (Top) */}
+        <div className="toolbar-top-row">
+          {/* Left: Brand & Sync status */}
+          <div className="header-left-brand">
+            <div className="toolbar-brand" title="ExamLab - AI Smart Exam Workspace">
+              <div className="ai-logo-glow">
+                <img src="/logo.svg" alt="ExamLab Logo" />
+              </div>
+              <span className="brand-title-text">ExamLab</span>
             </div>
-            <span className="brand-title-text">ExamLab</span>
+
+            {getSyncStatusBadge()}
+            {isReadOnly && (
+              <div className="read-only-badge" title="Chế độ chỉ xem">
+                👁️ Chỉ xem
+              </div>
+            )}
+
+            {isCloudExam && !isReadOnly && currentUser && (
+              <button 
+                className="btn btn-share" 
+                onClick={onOpenShareModal} 
+                title="Chia sẻ & Cộng tác thời gian thực"
+              >
+                <Share2 size={14} />
+                <span>Chia sẻ</span>
+              </button>
+            )}
           </div>
 
-          {getSyncStatusBadge()}
-          {isReadOnly && (
-            <div className="read-only-badge" title="Chế độ chỉ xem">
-              👁️ Chỉ xem
-            </div>
-          )}
+          {/* Right: Cloud Workspace, Save, Export & Account */}
+          <div className="header-right-actions">
+            {!isReadOnly && currentUser && (
+              <button className="btn btn-teacher-portal" onClick={onOpenDashboard} title="Không gian quản lý đề thi và phòng thi của Giáo viên">
+                <School size={15} /> <span>Không gian GV</span>
+              </button>
+            )}
 
-          {isCloudExam && !isReadOnly && currentUser && (
-            <button 
-              className="btn btn-share btn-desktop-only" 
-              onClick={onOpenShareModal} 
-              title="Chia sẻ & Cộng tác thời gian thực"
-            >
-              <Share2 size={15} />
-              <span>Chia sẻ</span>
-            </button>
-          )}
-        </div>
-        
-        {/* SECTION 2: Formatting & AI Tools (Center) */}
-        <div className="toolbar-section toolbar-center desktop-controls">
-          <div className="toolbar-group formatting-group">
-            <select 
-              className="font-selector"
-              value={fontFamily}
-              onChange={(e) => setFontFamily(e.target.value)}
-              disabled={isReadOnly}
-              aria-label="Chọn font chữ"
-            >
-              <option value="'Be Vietnam Pro', sans-serif">Be Vietnam Pro</option>
-              <option value="'Inter', sans-serif">Inter</option>
-              <option value="'Times New Roman', Times, serif">Times New Roman</option>
-              <option value="Arial, sans-serif">Arial</option>
-            </select>
-
-            <div className="zoom-controls">
-              <button className="btn-zoom" onClick={() => setZoom(prev => Math.max(50, prev - 10))} title="Thu nhỏ (Ctrl -)">
-                <ZoomOut size={14} />
-              </button>
-              <span className="zoom-value">{zoom}%</span>
-              <button className="btn-zoom" onClick={() => setZoom(prev => Math.min(200, prev + 10))} title="Phóng to (Ctrl +)">
-                <ZoomIn size={14} />
-              </button>
-            </div>
-
-            <button 
-              className={`btn btn-ai-glow ${showAnswers ? 'active' : ''}`}
-              onClick={() => setShowAnswers(!showAnswers)}
-              title="AI Hiển thị / Ẩn đáp án đúng"
-            >
-              <Sparkles size={15} />
-              <span>{showAnswers ? 'Đáp án: Bật' : 'Đáp án: Tắt'}</span>
-            </button>
-          </div>
-        </div>
-
-        {/* SECTION 3: Document Actions & Profile (Right) */}
-        <div className="toolbar-section toolbar-right desktop-actions">
-          {!isReadOnly && (
-            <div className="toolbar-group action-buttons-group">
-              <button className="btn btn-primary btn-add-q" onClick={onAddQuestion} title="Thêm câu hỏi mới vào đề thi">
-                <Plus size={16} /> <span>Thêm câu hỏi</span>
-              </button>
-              <button className="btn btn-secondary" onClick={onOpenBulkImport} title="Nhập hàng loạt câu hỏi từ văn bản Word / Text">
-                <FileText size={15} /> <span>Nhập nhanh</span>
-              </button>
-              <button className="btn btn-secondary" onClick={onShuffle} title="Trộn ngẫu nhiên thứ tự các câu hỏi">
-                <Shuffle size={15} /> <span>Trộn đề</span>
-              </button>
-              <button className="btn btn-secondary" onClick={onOpenBulkModal} title="Trộn hoán vị đáp án A, B, C, D tạo nhiều mã đề">
-                <Layers size={15} /> <span>Trộn đáp án</span>
-              </button>
-            </div>
-          )}
-
-          <div className="toolbar-group save-export-group">
             {!isCloudExam && !isReadOnly && (
               <button className="btn btn-secondary" onClick={onSave} title="Lưu đề thi vào bộ nhớ trình duyệt (Ctrl+S)">
                 <Save size={15} /> <span>Lưu</span>
@@ -165,57 +118,49 @@ export default function Toolbar({
             <button className="btn btn-secondary btn-export-word" onClick={onExport} title="Xuất đề thi chuẩn định dạng Microsoft Word (.docx)">
               <Download size={15} /> <span>Xuất Word</span>
             </button>
-          </div>
 
-          <div className="toolbar-divider"></div>
+            <div className="toolbar-divider"></div>
 
-          {/* Teacher Dashboard & Profile */}
-          <div className="toolbar-group user-group">
-            {!isReadOnly && currentUser && (
-              <button className="btn btn-teacher-portal" onClick={onOpenDashboard} title="Mở Không gian quản lý đề thi và phòng thi của Giáo viên">
-                <School size={15} /> <span>Không gian GV</span>
-              </button>
-            )}
-
+            {/* Profile Avatar / Login */}
             {currentUser ? (
-              <>
-                <div className="user-profile-menu">
-                  <div className="profile-dropdown-wrapper">
-                    <button 
-                      className="btn-profile-avatar"
-                      onClick={() => setShowUserDropdown(!showUserDropdown)}
-                      title={`Tài khoản: ${currentUser.username}`}
-                    >
-                      <div style={{ display: 'flex', alignItems: 'center' }}>
-                        <div className="avatar-circle" style={{ backgroundColor: currentUser.avatarColor || '#8b5cf6' }}>
-                          {currentUser.username.substring(0, 2).toUpperCase()}
-                        </div>
-                        <span className="username-text">{currentUser.username}</span>
+              <div className="user-profile-menu">
+                <div className="profile-dropdown-wrapper">
+                  <button 
+                    className="btn-profile-avatar"
+                    onClick={() => setShowUserDropdown(!showUserDropdown)}
+                    title={`Tài khoản: ${currentUser.username}`}
+                  >
+                    <div style={{ display: 'flex', alignItems: 'center' }}>
+                      <div className="avatar-circle" style={{ backgroundColor: currentUser.avatarColor || '#8b5cf6' }}>
+                        {currentUser.username.substring(0, 2).toUpperCase()}
                       </div>
-                    </button>
+                      <span className="username-text">{currentUser.username}</span>
+                    </div>
+                  </button>
 
-                    {showUserDropdown && (
-                      <>
-                        <div className="dropdown-overlay" onClick={() => setShowUserDropdown(false)}></div>
-                        <div className="profile-dropdown-content">
-                          <div className="dropdown-user-info">
-                            <User size={14} />
-                            <span>{currentUser.username}</span>
-                          </div>
+                  {showUserDropdown && (
+                    <>
+                      <div className="dropdown-overlay" onClick={() => setShowUserDropdown(false)}></div>
+                      <div className="profile-dropdown-content">
+                        <div className="dropdown-user-info">
+                          <User size={14} />
+                          <span>{currentUser.username}</span>
                         </div>
-                      </>
-                    )}
-                  </div>
+                        <div className="dropdown-divider"></div>
+                        <button className="dropdown-item" onClick={() => { setShowUserDropdown(false); onOpenDashboard(); }}>
+                          <School size={14} />
+                          <span>Không gian GV</span>
+                        </button>
+                        <div className="dropdown-divider"></div>
+                        <button className="dropdown-item logout-item" onClick={onLogout}>
+                          <LogOut size={14} />
+                          <span>Đăng xuất</span>
+                        </button>
+                      </div>
+                    </>
+                  )}
                 </div>
-                
-                <button 
-                  className="btn btn-secondary btn-logout" 
-                  onClick={onLogout}
-                  title="Đăng xuất khỏi hệ thống"
-                >
-                  <LogOut size={15} /> <span>Đăng xuất</span>
-                </button>
-              </>
+              </div>
             ) : (
               <button className="btn btn-primary btn-login" onClick={onOpenAuthModal} title="Đăng nhập hoặc tạo tài khoản mới">
                 <LogIn size={15} /> <span>Đăng nhập</span>
@@ -224,7 +169,79 @@ export default function Toolbar({
           </div>
         </div>
 
-        {/* MOBILE QUICK BAR (Visible on screens < 900px) */}
+        {/* TIER 2: EDITOR TOOLS RIBBON BAR (Bottom) */}
+        <div className="toolbar-ribbon-row">
+          <div className="ribbon-left-tools">
+            {/* Formatting Tools */}
+            <div className="ribbon-group">
+              <select 
+                className="font-selector"
+                value={fontFamily}
+                onChange={(e) => setFontFamily(e.target.value)}
+                disabled={isReadOnly}
+                aria-label="Chọn font chữ"
+              >
+                <option value="'Be Vietnam Pro', sans-serif">Be Vietnam Pro</option>
+                <option value="'Inter', sans-serif">Inter</option>
+                <option value="'Times New Roman', Times, serif">Times New Roman</option>
+                <option value="Arial, sans-serif">Arial</option>
+              </select>
+
+              <div className="zoom-controls">
+                <button className="btn-zoom" onClick={() => setZoom(prev => Math.max(50, prev - 10))} title="Thu nhỏ (Ctrl -)">
+                  <ZoomOut size={14} />
+                </button>
+                <span className="zoom-value">{zoom}%</span>
+                <button className="btn-zoom" onClick={() => setZoom(prev => Math.min(200, prev + 10))} title="Phóng to (Ctrl +)">
+                  <ZoomIn size={14} />
+                </button>
+              </div>
+
+              <button 
+                className={`btn btn-ai-glow ${showAnswers ? 'active' : ''}`}
+                onClick={() => setShowAnswers(!showAnswers)}
+                title="AI Hiển thị / Ẩn đáp án đúng"
+              >
+                <Sparkles size={15} />
+                <span>{showAnswers ? 'Đáp án: Bật' : 'Đáp án: Tắt'}</span>
+              </button>
+            </div>
+
+            <div className="ribbon-divider"></div>
+
+            {/* Creation & Shuffle Tools */}
+            {!isReadOnly && (
+              <div className="ribbon-group">
+                <button className="btn btn-primary btn-add-q" onClick={onAddQuestion} title="Thêm câu hỏi mới vào đề thi">
+                  <Plus size={16} /> <span>Thêm câu hỏi</span>
+                </button>
+                <button className="btn btn-secondary" onClick={onOpenBulkImport} title="Nhập nhanh từ văn bản Word / Text">
+                  <FileText size={15} /> <span>Nhập nhanh</span>
+                </button>
+                <button className="btn btn-secondary" onClick={onShuffle} title="Trộn ngẫu nhiên thứ tự các câu hỏi">
+                  <Shuffle size={15} /> <span>Trộn đề</span>
+                </button>
+                <button className="btn btn-secondary" onClick={onOpenBulkModal} title="Trộn hoán vị đáp án A, B, C, D tạo nhiều mã đề">
+                  <Layers size={15} /> <span>Trộn đáp án</span>
+                </button>
+              </div>
+            )}
+          </div>
+        </div>
+      </div>
+
+      {/* MOBILE TOOLBAR (Visible on screens < 900px) */}
+      <div className="toolbar-mobile">
+        <div className="toolbar-left">
+          <div className="toolbar-brand">
+            <div className="ai-logo-glow">
+              <img src="/logo.svg" alt="ExamLab Logo" />
+            </div>
+            <span className="brand-title-text">ExamLab</span>
+          </div>
+          {getSyncStatusBadge()}
+        </div>
+
         <div className="mobile-quick-actions">
           {!isReadOnly && (
             <button 
@@ -232,7 +249,7 @@ export default function Toolbar({
               onClick={onAddQuestion} 
               title="Thêm câu hỏi"
             >
-              <Plus size={18} />
+              <Plus size={16} />
               <span className="mobile-btn-label">Thêm câu</span>
             </button>
           )}
